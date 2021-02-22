@@ -6,3 +6,10 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+
+class TelaHomeViewModel {
+    var email: BehaviorRelay<String> = BehaviorRelay<String>(value: "")
+    var senha: BehaviorRelay<String> = BehaviorRelay<String>(value: "")    
+}

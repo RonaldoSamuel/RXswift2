@@ -45,10 +45,10 @@ class ViewFirstPage: UIView {
         txt.layer.shadowOpacity = 0.2
         txt.layer.shadowColor = UIColor.white.cgColor
         txt.layer.shadowRadius = 10
-        txt.setNormalLabelColor(.gray, for: .normal)
+        txt.setNormalLabelColor(.white, for: .normal)
         txt.placeholder = "Digite O Seu Email"
         txt.font = UIFont.boldSystemFont(ofSize: 15)
-        txt.setFilledBackgroundColor(.lightGray, for: .normal)
+        txt.setFilledBackgroundColor(.clear, for: .normal)
         txt.setTrailingAssistiveLabelColor(.red, for: .editing)
         txt.setTrailingAssistiveLabelColor(.red, for: .normal)
         txt.sizeToFit()
@@ -71,7 +71,7 @@ class ViewFirstPage: UIView {
         txt.layer.shadowOpacity = 0.2
         txt.layer.shadowColor = UIColor.white.cgColor
         txt.layer.shadowRadius = 10
-        txt.setFilledBackgroundColor(.lightGray, for: .normal)
+        txt.setFilledBackgroundColor(.clear, for: .normal)
         txt.placeholder = "Digite Sua Senha"
         txt.isSecureTextEntry = true
         txt.textContentType = .password

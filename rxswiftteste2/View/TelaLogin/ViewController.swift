@@ -7,8 +7,15 @@
 
 import UIKit
 import MaterialComponents.MaterialSnackbar
+import RxSwift
+import RxCocoa
 
 class ViewController: UIViewController{
+    
+    var telaHome = TelaHomeViewController()
+    
+    var email: BehaviorRelay<String> = BehaviorRelay<String>(value: "")
+    var senha: BehaviorRelay<String> = BehaviorRelay<String>(value: "")
     
     var presentationView = ViewFirstPage()
     
@@ -18,6 +25,7 @@ class ViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         hideKeyboardTapped()
         
@@ -57,8 +65,10 @@ class ViewController: UIViewController{
     }
     
     @objc func logar(_ sender: UIButton){
-        let email = presentationView.txtfield.text
-        let senha = presentationView.campoSenha.text
+        let email = presentationView.txtfield.text!
+        let senha = presentationView.campoSenha.text!
+        setName(email2: email, senha2: senha)
+        
     }
     
     @objc func done(_ sender: UITextField) {
@@ -94,6 +104,13 @@ class ViewController: UIViewController{
         UIView.setAnimationDuration(movementDuration )
         self.view.frame = self.view.frame.offsetBy(dx: 0,  dy: movement)
         UIView.commitAnimations()
+    }
+    
+    @IBAction func setName(email2: String, senha2: String){
+        let vc = TelaHomeViewController()
+        email.accept(email2)
+        senha.accept(senha2)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }
