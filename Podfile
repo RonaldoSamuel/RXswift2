@@ -14,6 +14,7 @@ target 'rxswiftteste2' do
   pod 'MaterialComponents/TextControls+OutlinedTextFields'
   pod 'MaterialComponents/Buttons'
   pod 'MaterialComponents/Snackbar'
+  pod 'MaterialComponents/AppBar'
 
   target 'rxswiftteste2Tests' do
     inherit! :search_paths

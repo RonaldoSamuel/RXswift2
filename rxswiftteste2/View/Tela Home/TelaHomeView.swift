@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import MaterialComponents.MaterialAppBar
 
 class TelaHomeView: UIView{
     
     var labelEmail: UILabel = {
         var lbl = UILabel()
         lbl.text = "E-Mail"
+        lbl.numberOfLines = 0
         lbl.textColor = .black
         lbl.textAlignment = .center
         lbl.translatesAutoresizingMaskIntoConstraints = false
@@ -27,17 +29,21 @@ class TelaHomeView: UIView{
         return lbl
     }()
     
+    
     override init(frame: CGRect){
         super.init(frame: frame)
+        createSubviews()
     }
     required init?(coder: NSCoder){
         super.init(coder: coder)
+        createSubviews()
     }
     
     func createSubviews(){
         backgroundColor = .white
-        
+        setupBackground()
         setupEmailLabel()
+        setupSenhaLabel()
     }
     
     func setupEmailLabel(){

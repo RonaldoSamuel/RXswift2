@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let nav = UINavigationController()
-        let vc = ViewController()
+        let vc = TelaLoginViewController()
         
         nav.pushViewController(vc, animated: true)
         window = UIWindow(frame: UIScreen.main.bounds)

@@ -12,12 +12,13 @@ import MaterialComponents.MaterialTextControls_OutlinedTextAreas
 import MaterialComponents.MaterialTextControls_OutlinedTextFields
 import MaterialComponents.MaterialButtons
 
-class ViewFirstPage: UIView {
+class TelaLoginView: UIView {
+    
+    var isSenhaVisivel: Bool = true
     
     var scrlView: UIScrollView = {
         var scrl = UIScrollView()
         scrl.translatesAutoresizingMaskIntoConstraints = false
-        scrl.showsHorizontalScrollIndicator = false
         return scrl
     }()
     
@@ -31,6 +32,13 @@ class ViewFirstPage: UIView {
         return lbl
     }()
     
+    var imageLogo: UIImageView = {
+        var img = UIImageView(frame: UIScreen.main.bounds)
+        img.image = UIImage(named: "Logo")
+        img.translatesAutoresizingMaskIntoConstraints = false
+        return img
+    }()
+    
     var emailLabel :UILabel = {
         var lbl = UILabel()
         lbl.text = "E-Mail"
@@ -40,15 +48,20 @@ class ViewFirstPage: UIView {
         return lbl
     }()
     
-    var txtfield: MDCFilledTextField = {
+    var txtEmail: MDCFilledTextField = {
         var txt = MDCFilledTextField()
         txt.layer.shadowOpacity = 0.2
         txt.layer.shadowColor = UIColor.white.cgColor
         txt.layer.shadowRadius = 10
         txt.setNormalLabelColor(.white, for: .normal)
-        txt.placeholder = "Digite O Seu Email"
+        txt.setTextColor(.white, for: .editing)
+        txt.setTextColor(.white, for: .normal)
+        txt.attributedPlaceholder = NSAttributedString(
+            string: "Digite o Seu E-mail",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         txt.font = UIFont.boldSystemFont(ofSize: 15)
         txt.setFilledBackgroundColor(.clear, for: .normal)
+        txt.setFilledBackgroundColor(.clear, for: .editing)
         txt.setTrailingAssistiveLabelColor(.red, for: .editing)
         txt.setTrailingAssistiveLabelColor(.red, for: .normal)
         txt.sizeToFit()
@@ -65,14 +78,18 @@ class ViewFirstPage: UIView {
         return lbl
     }()
     
-    
-    var campoSenha: MDCFilledTextField = {
+    var txtSenha: MDCFilledTextField = {
         var txt = MDCFilledTextField()
         txt.layer.shadowOpacity = 0.2
         txt.layer.shadowColor = UIColor.white.cgColor
         txt.layer.shadowRadius = 10
+        txt.setFilledBackgroundColor(.clear, for: .editing)
         txt.setFilledBackgroundColor(.clear, for: .normal)
-        txt.placeholder = "Digite Sua Senha"
+        txt.attributedPlaceholder = NSAttributedString(
+            string: "Digite Sua Senha",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        txt.setTextColor(.white, for: .editing)
+        txt.setTextColor(.white, for: .normal)
         txt.isSecureTextEntry = true
         txt.textContentType = .password
         txt.font = UIFont.boldSystemFont(ofSize: 15)
@@ -82,40 +99,30 @@ class ViewFirstPage: UIView {
         return txt
     }()
     
-    var background: UIImageView = {
-        let imageView = UIImageView(frame: .zero)
-        imageView.image = UIImage(named: "background")
-        imageView.contentMode = .scaleToFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
+    
     
     var imagem = UIImage(named: "background")
     
-    var btn: UIButton = {
+    var btnToggleSenha: UIButton = {
         var btn = UIButton(type: .custom)
-        let image = UIImage(named: "visible")
-        btn.setImage(image, for: .normal)
+        var imagebtn = UIImage(named: "notVisible")
+        btn.setImage(imagebtn, for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
     
-    var outlined: MDCButton = {
+    var btnLogin: MDCButton = {
         var btn = MDCButton()
         btn.layer.shadowOpacity = 0.2
         btn.layer.shadowColor = UIColor.white.cgColor
         btn.layer.shadowRadius = 10
         btn.layer.cornerRadius = 7
         btn.setTitle("Logar", for: .normal)
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        return btn
-    }()
-    
-    var botaoLogin: UIButton = {
-        var btn = UIButton()
-        btn.backgroundColor = .black
-        btn.setTitle("Entrar",for: .normal)
+        btn.setTitle("Logar", for: .disabled)
         btn.setTitleColor(.white, for: .normal)
+        btn.setTitleColor(.gray, for: .disabled)
+        btn.setBackgroundColor(.red, for: .disabled)
+        btn.setBackgroundColor(.black, for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
@@ -124,6 +131,7 @@ class ViewFirstPage: UIView {
         super.init(frame: frame)
         createSubViews()
     }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         createSubViews()
@@ -134,21 +142,13 @@ class ViewFirstPage: UIView {
         
         setupBackground()
         setupScrollView()
-        setupLabel()
+        setupLogo()
         setupCampoEmail()
         setupCampoSenha()
         setupBotaoLogar()
     }
     
-    func setupBackground(){
-        addSubview(background)
-        NSLayoutConstraint.activate([
-            background.topAnchor.constraint(equalTo: topAnchor),
-            background.bottomAnchor.constraint(equalTo: bottomAnchor),
-            background.leadingAnchor.constraint(equalTo: leadingAnchor),
-            background.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
-    }
+    
     
     func setupScrollView(){
         addSubview(scrlView)
@@ -157,6 +157,15 @@ class ViewFirstPage: UIView {
             scrlView.bottomAnchor.constraint(equalTo: bottomAnchor),
             scrlView.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrlView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+    }
+    func setupLogo(){
+        scrlView.addSubview(imageLogo)
+        NSLayoutConstraint.activate([
+            imageLogo.topAnchor.constraint(equalTo: topAnchor,constant: 40),
+            imageLogo.heightAnchor.constraint(equalToConstant: 200),
+            imageLogo.leadingAnchor.constraint(equalTo: leadingAnchor,constant: UIScreen.main.bounds.width*0.20),
+            imageLogo.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -UIScreen.main.bounds.width*0.20)
         ])
     }
     
@@ -170,50 +179,55 @@ class ViewFirstPage: UIView {
     }
     
     func setupCampoEmail(){
-        scrlView.addSubview(txtfield)
+        scrlView.addSubview(txtEmail)
         NSLayoutConstraint.activate([
-            txtfield.topAnchor.constraint(equalTo: descricaoLabel.bottomAnchor,constant: UIScreen.main.bounds.height*0.30),
-            txtfield.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 40),
-            txtfield.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -40)
+            txtEmail.topAnchor.constraint(equalTo: imageLogo.bottomAnchor,constant: UIScreen.main.bounds.height*0.05),
+            txtEmail.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 40),
+            txtEmail.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -40)
         ])
         scrlView.addSubview(emailLabel)
         NSLayoutConstraint.activate([
-            emailLabel.bottomAnchor.constraint(equalTo: txtfield.topAnchor,constant: 8.5),
-            emailLabel.leadingAnchor.constraint(equalTo: txtfield.leadingAnchor,constant: 10),
-            emailLabel.trailingAnchor.constraint(equalTo: txtfield.trailingAnchor,constant: -25)
+            emailLabel.bottomAnchor.constraint(equalTo: txtEmail.topAnchor,constant: 8.5),
+            emailLabel.leadingAnchor.constraint(equalTo: txtEmail.leadingAnchor,constant: 10),
+            emailLabel.trailingAnchor.constraint(equalTo: txtEmail.trailingAnchor,constant: -25)
         ])
     }
+    
     func setupCampoSenha(){
-        scrlView.addSubview(campoSenha)
+        scrlView.addSubview(txtSenha)
         NSLayoutConstraint.activate([
-            campoSenha.topAnchor.constraint(equalTo: txtfield.bottomAnchor,constant: 20),
-            campoSenha.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 40),
-            campoSenha.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -40)
+            txtSenha.topAnchor.constraint(equalTo: txtEmail.bottomAnchor,constant: 20),
+            txtSenha.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 40),
+            txtSenha.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -40)
         ])
         scrlView.addSubview(senhaLabel)
         NSLayoutConstraint.activate([
-            senhaLabel.bottomAnchor.constraint(equalTo: campoSenha.topAnchor,constant: 8.5),
-            senhaLabel.leadingAnchor.constraint(equalTo: campoSenha.leadingAnchor,constant: 10),
-            senhaLabel.trailingAnchor.constraint(equalTo: campoSenha.trailingAnchor,constant: -25)
+            senhaLabel.bottomAnchor.constraint(equalTo: txtSenha.topAnchor,constant: 8.5),
+            senhaLabel.leadingAnchor.constraint(equalTo: txtSenha.leadingAnchor,constant: 10),
+            senhaLabel.trailingAnchor.constraint(equalTo: txtSenha.trailingAnchor,constant: -25)
         ])
         
-        scrlView.addSubview(btn)
+        scrlView.addSubview(btnToggleSenha)
         NSLayoutConstraint.activate([
-            btn.trailingAnchor.constraint(equalTo: campoSenha.trailingAnchor,constant: -5),
-            btn.topAnchor.constraint(equalTo: campoSenha.topAnchor,constant: 8)
+            btnToggleSenha.trailingAnchor.constraint(equalTo: txtSenha.trailingAnchor,constant: -5),
+            btnToggleSenha.topAnchor.constraint(equalTo: txtSenha.topAnchor,constant: 8)
         ])
     }
     
     func setupBotaoLogar(){
-        scrlView.addSubview(outlined)
+        scrlView.addSubview(btnLogin)
         NSLayoutConstraint.activate([
-            outlined.topAnchor.constraint(equalTo: campoSenha.bottomAnchor,constant: 50),
-            outlined.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 40),
-            outlined.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -40),
-            outlined.heightAnchor.constraint(equalToConstant: 30)
+            btnLogin.topAnchor.constraint(equalTo: txtSenha.bottomAnchor,constant: 90),
+            btnLogin.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 40),
+            btnLogin.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -40)
         ])
     }
     
-    
-    
+    func toggleSenha(){
+        isSenhaVisivel = !isSenhaVisivel
+        txtSenha.isSecureTextEntry = isSenhaVisivel
+        let imgVisible = UIImage(named: "visible")
+        let imgNotVisible = UIImage(named: "notVisible")
+        btnToggleSenha.setImage(isSenhaVisivel ? imgNotVisible : imgVisible, for: .normal)
+    }
 }
