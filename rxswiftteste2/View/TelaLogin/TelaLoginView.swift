@@ -43,6 +43,7 @@ class TelaLoginView: UIView {
         lbl.text = "E-Mail"
         lbl.font = UIFont.boldSystemFont(ofSize: 15)
         lbl.textColor = .black
+        lbl.font = UIFont.boldSystemFont(ofSize: 12)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
@@ -74,6 +75,7 @@ class TelaLoginView: UIView {
         lbl.text = "Senha"
         lbl.font = UIFont.boldSystemFont(ofSize: 15)
         lbl.textColor = .black
+        lbl.font = UIFont.boldSystemFont(ofSize: 12)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
@@ -113,7 +115,16 @@ class TelaLoginView: UIView {
     
     var btnLogin: MDCButton = {
         var btn = MDCButton()
+        btn.layer.cornerRadius = 15
         btn.setTitle("Logar", for: .normal)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        return btn
+    }()
+    
+    var btnSingUp: MDCButton = {
+        var btn = MDCButton()
+        btn.layer.cornerRadius = 15
+        btn.setTitle("Cadastrar-se", for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
@@ -137,6 +148,7 @@ class TelaLoginView: UIView {
         setupCampoEmail()
         setupCampoSenha()
         setupBotaoLogar()
+        setupBotaoSingUp()
     }
     
     
@@ -154,25 +166,16 @@ class TelaLoginView: UIView {
         scrlView.addSubview(imageLogo)
         NSLayoutConstraint.activate([
             imageLogo.topAnchor.constraint(equalTo: topAnchor,constant: 40),
-            imageLogo.heightAnchor.constraint(equalToConstant: 200),
-            imageLogo.leadingAnchor.constraint(equalTo: leadingAnchor,constant: UIScreen.main.bounds.width*0.20),
-            imageLogo.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -UIScreen.main.bounds.width*0.20)
-        ])
-    }
-    
-    func setupLabel(){
-        scrlView.addSubview(descricaoLabel)
-        NSLayoutConstraint.activate([
-            descricaoLabel.topAnchor.constraint(equalTo: topAnchor,constant: 100),
-            descricaoLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 25),
-            descricaoLabel.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -25)
+            imageLogo.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height*0.4),
+            imageLogo.leadingAnchor.constraint(equalTo: leadingAnchor,constant: UIScreen.main.bounds.width*0.10),
+            imageLogo.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -UIScreen.main.bounds.width*0.10)
         ])
     }
     
     func setupCampoEmail(){
         scrlView.addSubview(txtEmail)
         NSLayoutConstraint.activate([
-            txtEmail.topAnchor.constraint(equalTo: imageLogo.bottomAnchor,constant: UIScreen.main.bounds.height*0.05),
+            txtEmail.topAnchor.constraint(equalTo: imageLogo.bottomAnchor,constant: UIScreen.main.bounds.height*0.1),
             txtEmail.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 40),
             txtEmail.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -40)
         ])
@@ -208,10 +211,20 @@ class TelaLoginView: UIView {
     func setupBotaoLogar(){
         scrlView.addSubview(btnLogin)
         NSLayoutConstraint.activate([
-            btnLogin.topAnchor.constraint(equalTo: txtSenha.bottomAnchor,constant: 90),
+            btnLogin.topAnchor.constraint(equalTo: txtSenha.bottomAnchor,constant: UIScreen.main.bounds.height*0.05),
             btnLogin.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 40),
             btnLogin.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -40),
             btnLogin.heightAnchor.constraint(equalToConstant: 48)
+        ])
+    }
+    
+    func setupBotaoSingUp(){
+        scrlView.addSubview(btnSingUp)
+        NSLayoutConstraint.activate([
+            btnSingUp.topAnchor.constraint(equalTo: btnLogin.bottomAnchor,constant: UIScreen.main.bounds.height*0.02),
+            btnSingUp.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 40),
+            btnSingUp.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -40),
+            btnSingUp.heightAnchor.constraint(equalToConstant: 48)
         ])
     }
     

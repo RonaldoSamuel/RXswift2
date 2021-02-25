@@ -9,6 +9,10 @@ import UIKit
 
 extension UIView {
     
+    func size() -> Any{
+        return UIScreen.main.bounds
+    }
+    
     func setupBackground(){
         let background = UIImageView(frame: .zero)
         background.image = UIImage(named: "background")

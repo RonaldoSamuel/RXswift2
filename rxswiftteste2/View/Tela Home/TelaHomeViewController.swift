@@ -38,15 +38,17 @@ class TelaHomeViewController: UIViewController {
         super.viewDidLoad()
         
         hideKeyboardTapped()
+        viewModel.viewDidload()
         
+        presentationView.bottomAppbar.trailingBarButtonItems?.first?.action = #selector(prints(_:))
         
-        presentationView.bottomAppbar.floatingButton.addTarget(self, action: #selector(prints(_:)), for: .touchUpInside)
-        
-//        viewModel.email.bind { value in print("Ola \(value)")}.disposed(by: disposeBag)
         bindView()
     }
     
     func bindView(){
+        presentationView.bottomAppbar.floatingButton.rx.tap.bind {
+            self.viewModel.loadCep(cep: self.viewModel.cep)
+            self.viewModel.isBotaoPressioned.accept(true) }.disposed(by: disposeBag)
         
         self.presentationView.txtCep.rx.text.orEmpty.bind(to: self.viewModel.cep).disposed(by: self.disposeBag)
         
@@ -59,14 +61,23 @@ class TelaHomeViewController: UIViewController {
             
         }.disposed(by: disposeBag)
         
-        presentationView.bottomAppbar.floatingButton.rx.tap.bind { self.viewModel.loadCep(cep: self.viewModel.cep) }.disposed(by: disposeBag)
+        
+        
+        viewModel.isEmailPreenchido
+            .bind {value in self.viewModel.isBotaoPressioned
+                .bind {value2 in self.presentationView.txtCep.trailingAssistiveLabel.text = value2 ?
+                    value ? "" : "E-mail Invalido" : ""}
+                .disposed(by: self.disposeBag)
+            }.disposed(by: disposeBag)
+        
+        
+        
         
     }
     
     @objc func prints(_ sender: MDCBottomAppBarView){
-        
-//        loginScreen.viewModel.preencherValores(email: email, senha: senha)
-//        navigationController?.pushViewController(loginScreen, animated: true)
+        loginScreen.viewModel.preencherValores(email: email, senha: senha)
+        navigationController?.pushViewController(loginScreen, animated: true)
         
     }
     

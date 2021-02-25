@@ -44,6 +44,8 @@ class TelaLoginViewController: UIViewController{
         viewModel.email.bind {value in self.presentationView.txtEmail.text = value}.disposed(by: disposable)
         viewModel.senha.bind {value in self.presentationView.txtSenha.text = value}.disposed(by: disposable)
         
+        presentationView.btnSingUp.rx.tap.bind { self.fazerCadastro() }.disposed(by: disposable)
+        
         presentationView.txtEmail.rx
             .text
             .orEmpty
@@ -124,5 +126,9 @@ class TelaLoginViewController: UIViewController{
         }
     }
     
+    func fazerCadastro(){
+        let vc = TelaCadastroViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
 }

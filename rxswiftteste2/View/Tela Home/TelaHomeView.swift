@@ -30,8 +30,27 @@ class TelaHomeView: UIView{
         return lbl
     }()
     
+    var labelCep: UILabel = {
+        var lbl = UILabel()
+        lbl.textColor = .black
+        lbl.textAlignment = .left
+        lbl.font = UIFont.boldSystemFont(ofSize: 12)
+        lbl.text = "CEP"
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        return lbl
+    }()
+    
     var txtCep: MDCFilledTextField = {
         var txt = MDCFilledTextField()
+        txt.setTextColor(.white, for: .normal)
+        txt.setTextColor(.white, for: .editing)
+        txt.setTrailingAssistiveLabelColor(.red, for: .normal)
+        txt.setTrailingAssistiveLabelColor(.red, for: .editing)
+        txt.attributedPlaceholder = NSAttributedString(
+            string: "Informe um Cep",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        txt.setFilledBackgroundColor(.clear, for: .normal)
+        txt.setFilledBackgroundColor(.clear, for: .editing)
         txt.translatesAutoresizingMaskIntoConstraints = false
         return txt
     }()
@@ -40,6 +59,7 @@ class TelaHomeView: UIView{
         var appbar = MDCBottomAppBarView()
         appbar.barTintColor = .orange
         appbar.floatingButton.accessibilityLabel = "Teste"
+        appbar.floatingButton.backgroundColor = .white
         appbar.floatingButton.setImage(UIImage(named: "notVisible"), for: .normal)
         let botao = UIBarButtonItem()
         botao.accessibilityLabel = "Comprar"
@@ -64,6 +84,7 @@ class TelaHomeView: UIView{
         setupEmailLabel()
         setupSenhaLabel()
         setupTxtCep()
+        setupCepLabel()
         setupBottomAppBar()
     }
     
@@ -86,12 +107,22 @@ class TelaHomeView: UIView{
         ])
     }
     
+    
     func setupTxtCep(){
         addSubview(txtCep)
         NSLayoutConstraint.activate([
             txtCep.topAnchor.constraint(equalTo: labelSenha.bottomAnchor,constant: 25),
             txtCep.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 25),
             txtCep.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -25)
+        ])
+    }
+    
+    func setupCepLabel(){
+        addSubview(labelCep)
+        NSLayoutConstraint.activate([
+            labelCep.bottomAnchor.constraint(equalTo: txtCep.topAnchor,constant: 2),
+            labelCep.leadingAnchor.constraint(equalTo: txtCep.leadingAnchor,constant: 12),
+            labelCep.trailingAnchor.constraint(equalTo: txtCep.trailingAnchor)
         ])
     }
     
