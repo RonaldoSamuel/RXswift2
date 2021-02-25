@@ -1,17 +1,12 @@
 PODS:
+  - Alamofire (5.4.1)
   - MaterialComponents/AnimationTiming (122.0.1)
-  - MaterialComponents/AppBar (122.0.1):
-    - MaterialComponents/FlexibleHeader
-    - MaterialComponents/HeaderStackView
-    - MaterialComponents/NavigationBar
-    - MaterialComponents/private/Application
-    - MaterialComponents/private/Icons/ic_arrow_back
-    - MaterialComponents/private/UIMetrics
-    - MaterialComponents/ShadowElevations
-    - MaterialComponents/ShadowLayer
-    - MaterialComponents/Typography
-    - MDFInternationalization
   - MaterialComponents/Availability (122.0.1)
+  - MaterialComponents/BottomAppBar (122.0.1):
+    - MaterialComponents/Buttons
+    - MaterialComponents/NavigationBar
+    - MaterialComponents/private/Math
+    - MDFInternationalization
   - MaterialComponents/ButtonBar (122.0.1):
     - MaterialComponents/Buttons
     - MaterialComponents/private/Application
@@ -32,21 +27,6 @@ PODS:
     - MaterialComponents/Availability
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/FlexibleHeader (122.0.1):
-    - MaterialComponents/Availability
-    - MaterialComponents/Elevation
-    - "MaterialComponents/FlexibleHeader+ShiftBehavior"
-    - "MaterialComponents/FlexibleHeader+ShiftBehaviorEnabledWithStatusBar"
-    - MaterialComponents/private/Application
-    - MaterialComponents/private/Math
-    - MaterialComponents/private/UIMetrics
-    - MaterialComponents/ShadowElevations
-    - MaterialComponents/ShadowLayer
-    - MDFTextAccessibility
-  - "MaterialComponents/FlexibleHeader+ShiftBehavior (122.0.1)"
-  - "MaterialComponents/FlexibleHeader+ShiftBehaviorEnabledWithStatusBar (122.0.1)":
-    - "MaterialComponents/FlexibleHeader+ShiftBehavior"
-  - MaterialComponents/HeaderStackView (122.0.1)
   - MaterialComponents/Ink (122.0.1):
     - MaterialComponents/Availability
     - MaterialComponents/private/Color
@@ -64,9 +44,6 @@ PODS:
   - MaterialComponents/private/Application (122.0.1)
   - MaterialComponents/private/Color (122.0.1):
     - MaterialComponents/Availability
-  - MaterialComponents/private/Icons/Base (122.0.1)
-  - MaterialComponents/private/Icons/ic_arrow_back (122.0.1):
-    - MaterialComponents/private/Icons/Base
   - MaterialComponents/private/KeyboardWatcher (122.0.1):
     - MaterialComponents/private/Application
   - MaterialComponents/private/Math (122.0.1)
@@ -98,8 +75,6 @@ PODS:
     - MaterialComponents/Availability
     - MaterialComponents/private/Math
     - "MaterialComponents/private/TextControlsPrivate+Shared"
-  - MaterialComponents/private/UIMetrics (122.0.1):
-    - MaterialComponents/private/Application
   - MaterialComponents/Ripple (122.0.1):
     - MaterialComponents/AnimationTiming
     - MaterialComponents/Availability
@@ -168,7 +143,8 @@ PODS:
   - RxSwift (6.1.0)
 
 DEPENDENCIES:
-  - MaterialComponents/AppBar
+  - Alamofire
+  - MaterialComponents/BottomAppBar
   - MaterialComponents/Buttons
   - MaterialComponents/Snackbar
   - "MaterialComponents/TextControls+FilledTextAreas"
@@ -180,6 +156,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - MaterialComponents
     - MDFInternationalization
     - MDFTextAccessibility
@@ -188,6 +165,7 @@ SPEC REPOS:
     - RxSwift
 
 SPEC CHECKSUMS:
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   MaterialComponents: bdbe76d0fad6669ebd581267bb42b758c9c95138
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
@@ -195,6 +173,6 @@ SPEC CHECKSUMS:
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
 
-PODFILE CHECKSUM: e5ffc36d247f11ef66248cfffd65fd3c629c0c3f
+PODFILE CHECKSUM: 12780853efb5e1e46cada89b38adaccec11b6c31
 
 COCOAPODS: 1.10.1

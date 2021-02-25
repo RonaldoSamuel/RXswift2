@@ -41,8 +41,20 @@ class TelaLoginViewController: UIViewController{
     
     func bindView(){
         
-        presentationView.txtEmail.rx.text.orEmpty.bind(to: viewModel.email).disposed(by: disposable)
-        presentationView.txtSenha.rx.text.orEmpty.bind(to: viewModel.senha).disposed(by: disposable)
+        viewModel.email.bind {value in self.presentationView.txtEmail.text = value}.disposed(by: disposable)
+        viewModel.senha.bind {value in self.presentationView.txtSenha.text = value}.disposed(by: disposable)
+        
+        presentationView.txtEmail.rx
+            .text
+            .orEmpty
+            .bind(to: viewModel.email)
+            .disposed(by: disposable)
+        
+        presentationView.txtSenha.rx
+            .text
+            .orEmpty
+            .bind(to: viewModel.senha)
+            .disposed(by: disposable)
         
         presentationView.txtSenha.rx
             .controlEvent(.primaryActionTriggered)
@@ -62,24 +74,32 @@ class TelaLoginViewController: UIViewController{
         presentationView.btnLogin.rx
             .tap
             .bind {
+//                self.viewModel.loadCep(cep: self.viewModel.email)
                 self.fazerLogin()
                 self.viewModel.isBtnLoginPressed.accept(true)
             }.disposed(by: disposable)
         
         
-        viewModel.isSenhaPreenchida.bind {value in
-            
-            self.viewModel.isBtnLoginPressed.bind {value2 in self.presentationView.txtSenha.trailingAssistiveLabel.text = value2 ? value ? "" : "Senha precisa ter 6 digitos" : ""}.disposed(by: self.disposable)
+        viewModel.isSenhaPreenchida.bind {value in self.viewModel.isBtnLoginPressed
+            .bind {value2 in self.presentationView.txtSenha.trailingAssistiveLabel.text = value2 ?
+                value ? "" : "Senha precisa ter 6 digitos" : ""}
+            .disposed(by: self.disposable)
             
         }.disposed(by: disposable)
         
-        viewModel.isEmailPreenchido.bind {value in
-            self.viewModel.isBtnLoginPressed.bind {value2 in self.presentationView.txtEmail.trailingAssistiveLabel.text = value2 ? value ? "" : "E-mail Invalido" : ""}.disposed(by: self.disposable)
-        }.disposed(by: disposable)
+        viewModel.isEmailPreenchido
+            .bind {value in self.viewModel.isBtnLoginPressed
+                .bind {value2 in self.presentationView.txtEmail.trailingAssistiveLabel.text = value2 ?
+                    value ? "" : "E-mail Invalido" : ""}
+                .disposed(by: self.disposable)
+            }.disposed(by: disposable)
         
-        viewModel.isFormPreenchido.bind { value in
-//            	   self.presentationView.btnLogin.isEnabled = value
-        }.disposed(by: disposable)
+        viewModel.isFormPreenchido
+            .bind { value in
+//                self.presentationView.btnLogin.isEnabled = value
+                
+            }
+            .disposed(by: disposable)
     }
     
     @objc func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -103,4 +123,6 @@ class TelaLoginViewController: UIViewController{
             navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
+    
 }

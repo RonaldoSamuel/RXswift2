@@ -8,11 +8,10 @@
 import UIKit
 import MaterialComponents.MaterialTextControls_FilledTextAreas
 import MaterialComponents.MaterialTextControls_FilledTextFields
-import MaterialComponents.MaterialTextControls_OutlinedTextAreas
-import MaterialComponents.MaterialTextControls_OutlinedTextFields
 import MaterialComponents.MaterialButtons
 
 class TelaLoginView: UIView {
+    
     
     var isSenhaVisivel: Bool = true
     
@@ -56,6 +55,7 @@ class TelaLoginView: UIView {
         txt.setNormalLabelColor(.white, for: .normal)
         txt.setTextColor(.white, for: .editing)
         txt.setTextColor(.white, for: .normal)
+        txt.trailingView = UIButton()
         txt.attributedPlaceholder = NSAttributedString(
             string: "Digite o Seu E-mail",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
@@ -113,16 +113,7 @@ class TelaLoginView: UIView {
     
     var btnLogin: MDCButton = {
         var btn = MDCButton()
-        btn.layer.shadowOpacity = 0.2
-        btn.layer.shadowColor = UIColor.white.cgColor
-        btn.layer.shadowRadius = 10
-        btn.layer.cornerRadius = 7
         btn.setTitle("Logar", for: .normal)
-        btn.setTitle("Logar", for: .disabled)
-        btn.setTitleColor(.white, for: .normal)
-        btn.setTitleColor(.gray, for: .disabled)
-        btn.setBackgroundColor(.red, for: .disabled)
-        btn.setBackgroundColor(.black, for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
@@ -219,7 +210,8 @@ class TelaLoginView: UIView {
         NSLayoutConstraint.activate([
             btnLogin.topAnchor.constraint(equalTo: txtSenha.bottomAnchor,constant: 90),
             btnLogin.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 40),
-            btnLogin.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -40)
+            btnLogin.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -40),
+            btnLogin.heightAnchor.constraint(equalToConstant: 48)
         ])
     }
     

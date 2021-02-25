@@ -15,8 +15,13 @@ class TelaLoginViewModel {
     
     var model = TelaLoginModel()
     
-    var email: BehaviorSubject<String> = BehaviorSubject<String>(value: "")
-    var senha: BehaviorSubject<String> = BehaviorSubject<String>(value: "")
+    var email: BehaviorRelay<String> = BehaviorRelay<String>(value: "")
+    var senha: BehaviorRelay<String> = BehaviorRelay<String>(value: "")
+    
+    func preencherValores(email: String,senha: String){
+        self.email.accept("email \(email)")
+        self.senha.accept("senha \(senha)")
+    }
     
     var isEmailPreenchido: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
     var isSenhaPreenchida: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
@@ -25,7 +30,11 @@ class TelaLoginViewModel {
     
     var isFormPreenchido: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
     
+    
+    
     func viewDidLoad(){
+        
+       
         
         Observable.combineLatest(isEmailPreenchido, isSenhaPreenchida) { (email, senha) in
             return email == true && senha == true
@@ -34,12 +43,12 @@ class TelaLoginViewModel {
         .disposed(by: disposable)
         
         email.asObservable().subscribe(onNext: { value in
-            self.isEmailPreenchido.accept(value.count > 12)
+            self.isEmailPreenchido.accept(value.count > 1)
             self.model.email = value
         }).disposed(by: disposable)
         
         senha.asObservable().subscribe(onNext: { value in
-            self.isSenhaPreenchida.accept(value.count > 6)
+            self.isSenhaPreenchida.accept(value.count > 1)
             self.model.senha = value
         }).disposed(by: disposable)
     }

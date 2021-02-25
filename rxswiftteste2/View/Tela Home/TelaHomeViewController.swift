@@ -8,15 +8,18 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import MaterialComponents.MDCAppBar
+import MaterialComponents.MaterialBottomAppBar
 
 class TelaHomeViewController: UIViewController {
     
     var presentationView = TelaHomeView()
+//    var helper = AlamofireHelper()
     var viewModel = TelaHomeViewModel()
+    var loginScreen = TelaLoginViewController()
     let disposeBag = DisposeBag()
-    let appBar = MDCAppBar()
     
+    var email: String = ""
+    var senha: String = ""
         
     override func loadView() {
         view = presentationView
@@ -33,14 +36,41 @@ class TelaHomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.addChild(appBar.headerViewController)
-        viewModel.email.bind { value in print("Ola \(value)")}.disposed(by: disposeBag)
+        
+        hideKeyboardTapped()
+        
+        
+        presentationView.bottomAppbar.floatingButton.addTarget(self, action: #selector(prints(_:)), for: .touchUpInside)
+        
+//        viewModel.email.bind { value in print("Ola \(value)")}.disposed(by: disposeBag)
         bindView()
     }
     
     func bindView(){
         
-        viewModel.email.bind { value in self.presentationView.labelEmail.text = "Ola \(value)" }.disposed(by: disposeBag)
-        viewModel.senha.bind { value in self.presentationView.labelSenha.text = "Sua Senha:\(value)" }.disposed(by: disposeBag)
+        self.presentationView.txtCep.rx.text.orEmpty.bind(to: self.viewModel.cep).disposed(by: self.disposeBag)
+        
+        viewModel.email.bind { value in self.presentationView.labelEmail.text = "Ola \(value)"
+            self.email = value
+            
+        }.disposed(by: disposeBag)
+        viewModel.senha.bind { value in self.presentationView.labelSenha.text = "Sua Senha:\(value)"
+            self.senha = value
+            
+        }.disposed(by: disposeBag)
+        
+        presentationView.bottomAppbar.floatingButton.rx.tap.bind { self.viewModel.loadCep(cep: self.viewModel.cep) }.disposed(by: disposeBag)
+        
+    }
+    
+    @objc func prints(_ sender: MDCBottomAppBarView){
+        
+//        loginScreen.viewModel.preencherValores(email: email, senha: senha)
+//        navigationController?.pushViewController(loginScreen, animated: true)
+        
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 }

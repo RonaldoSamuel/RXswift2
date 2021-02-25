@@ -22,6 +22,17 @@
 		62B6E1E525E413CA0035FC2A /* TelaHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6E1E425E413CA0035FC2A /* TelaHomeViewModel.swift */; };
 		62B6E1F725E419CA0035FC2A /* TelaHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6E1F625E419CA0035FC2A /* TelaHomeView.swift */; };
 		62B6E1FF25E419DD0035FC2A /* TelaHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6E1FE25E419DD0035FC2A /* TelaHomeViewController.swift */; };
+		62F2297A25E672B900066E33 /* AlamofireHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F2297925E672B900066E33 /* AlamofireHelper.swift */; };
+		62F2298025E674D700066E33 /* TelaHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F2297F25E674D700066E33 /* TelaHomeModel.swift */; };
+		62F229B025E69CAA00066E33 /* APIConstans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F229AF25E69CAA00066E33 /* APIConstans.swift */; };
+		62F229B525E69CC600066E33 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F229B425E69CC600066E33 /* APIClient.swift */; };
+		62F229BA25E69D3500066E33 /* StatusRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F229B925E69D3500066E33 /* StatusRouter.swift */; };
+		62F229BF25E69F5600066E33 /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F229BE25E69F5600066E33 /* APIConfiguration.swift */; };
+		62F229C425E6A00D00066E33 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F229C325E6A00D00066E33 /* Status.swift */; };
+		62F229CF25E6B65300066E33 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F229CE25E6B65300066E33 /* LoginRouter.swift */; };
+		62F229D425E6B65F00066E33 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F229D325E6B65F00066E33 /* Login.swift */; };
+		62F229D925E6B8F800066E33 /* Cep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F229D825E6B8F800066E33 /* Cep.swift */; };
+		62F229DE25E6B90100066E33 /* CepRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F229DD25E6B90100066E33 /* CepRouter.swift */; };
 		7176FB2F8A5ADDCBDB20BC23 /* Pods_rxswiftteste2_rxswiftteste2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26711E3BA2A7995D182B8B94 /* Pods_rxswiftteste2_rxswiftteste2UITests.framework */; };
 		E28C8CF902DEC8A6F5073427 /* Pods_rxswiftteste2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B71796132E9E082F9CC129A9 /* Pods_rxswiftteste2.framework */; };
 /* End PBXBuildFile section */
@@ -68,6 +79,17 @@
 		62B6E1E425E413CA0035FC2A /* TelaHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaHomeViewModel.swift; sourceTree = "<group>"; };
 		62B6E1F625E419CA0035FC2A /* TelaHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaHomeView.swift; sourceTree = "<group>"; };
 		62B6E1FE25E419DD0035FC2A /* TelaHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaHomeViewController.swift; sourceTree = "<group>"; };
+		62F2297925E672B900066E33 /* AlamofireHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireHelper.swift; sourceTree = "<group>"; };
+		62F2297F25E674D700066E33 /* TelaHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaHomeModel.swift; sourceTree = "<group>"; };
+		62F229AF25E69CAA00066E33 /* APIConstans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstans.swift; sourceTree = "<group>"; };
+		62F229B425E69CC600066E33 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		62F229B925E69D3500066E33 /* StatusRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusRouter.swift; sourceTree = "<group>"; };
+		62F229BE25E69F5600066E33 /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
+		62F229C325E6A00D00066E33 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		62F229CE25E6B65300066E33 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		62F229D325E6B65F00066E33 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		62F229D825E6B8F800066E33 /* Cep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cep.swift; sourceTree = "<group>"; };
+		62F229DD25E6B90100066E33 /* CepRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CepRouter.swift; sourceTree = "<group>"; };
 		6BE048419F820EED8528397B /* Pods-rxswiftteste2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rxswiftteste2.debug.xcconfig"; path = "Target Support Files/Pods-rxswiftteste2/Pods-rxswiftteste2.debug.xcconfig"; sourceTree = "<group>"; };
 		73E1816780A4F57E028C5F08 /* Pods-rxswiftteste2-rxswiftteste2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rxswiftteste2-rxswiftteste2UITests.release.xcconfig"; path = "Target Support Files/Pods-rxswiftteste2-rxswiftteste2UITests/Pods-rxswiftteste2-rxswiftteste2UITests.release.xcconfig"; sourceTree = "<group>"; };
 		B71796132E9E082F9CC129A9 /* Pods_rxswiftteste2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rxswiftteste2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,6 +199,9 @@
 		62B6E1C925E3DC110035FC2A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				62F229AE25E69C9B00066E33 /* Constants */,
+				62F229AB25E69C6400066E33 /* Networking */,
+				62F2297825E672A800066E33 /* Helper */,
 				62B6E1CA25E3DC160035FC2A /* Extentions */,
 			);
 			path = Core;
@@ -212,6 +237,7 @@
 		62B6E1D525E4122D0035FC2A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				62F2297E25E674C900066E33 /* TelaHome */,
 				622EE6A125E51AEE009D11FE /* TelaLogin */,
 			);
 			path = Model;
@@ -257,6 +283,61 @@
 				62B6E1E425E413CA0035FC2A /* TelaHomeViewModel.swift */,
 			);
 			path = "Tela Home";
+			sourceTree = "<group>";
+		};
+		62F2297825E672A800066E33 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				62F2297925E672B900066E33 /* AlamofireHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		62F2297E25E674C900066E33 /* TelaHome */ = {
+			isa = PBXGroup;
+			children = (
+				62F2297F25E674D700066E33 /* TelaHomeModel.swift */,
+			);
+			path = TelaHome;
+			sourceTree = "<group>";
+		};
+		62F229AB25E69C6400066E33 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				62F229AD25E69C8B00066E33 /* Codable */,
+				62F229AC25E69C8300066E33 /* Router */,
+				62F229B425E69CC600066E33 /* APIClient.swift */,
+				62F229BE25E69F5600066E33 /* APIConfiguration.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		62F229AC25E69C8300066E33 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				62F229B925E69D3500066E33 /* StatusRouter.swift */,
+				62F229CE25E6B65300066E33 /* LoginRouter.swift */,
+				62F229DD25E6B90100066E33 /* CepRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		62F229AD25E69C8B00066E33 /* Codable */ = {
+			isa = PBXGroup;
+			children = (
+				62F229C325E6A00D00066E33 /* Status.swift */,
+				62F229D325E6B65F00066E33 /* Login.swift */,
+				62F229D825E6B8F800066E33 /* Cep.swift */,
+			);
+			path = Codable;
+			sourceTree = "<group>";
+		};
+		62F229AE25E69C9B00066E33 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				62F229AF25E69CAA00066E33 /* APIConstans.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		8311386423E0C28A5026D459 /* Pods */ = {
@@ -519,16 +600,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62F229DE25E6B90100066E33 /* CepRouter.swift in Sources */,
 				6223628325DFFA8D001676BD /* TelaLoginViewController.swift in Sources */,
+				62F229B525E69CC600066E33 /* APIClient.swift in Sources */,
 				62B6E1CC25E3DC270035FC2A /* ExtentionViewController.swift in Sources */,
+				62F229BF25E69F5600066E33 /* APIConfiguration.swift in Sources */,
 				622362C425DFFC13001676BD /* TelaLoginView.swift in Sources */,
 				625BCE3325E5627C00033360 /* ExtentionView.swift in Sources */,
+				62F2297A25E672B900066E33 /* AlamofireHelper.swift in Sources */,
 				62B6E1E525E413CA0035FC2A /* TelaHomeViewModel.swift in Sources */,
+				62F229C425E6A00D00066E33 /* Status.swift in Sources */,
+				62F229B025E69CAA00066E33 /* APIConstans.swift in Sources */,
+				62F2298025E674D700066E33 /* TelaHomeModel.swift in Sources */,
 				62B6E1F725E419CA0035FC2A /* TelaHomeView.swift in Sources */,
 				622EE6A325E51AFF009D11FE /* TelaLoginModel.swift in Sources */,
+				62F229D425E6B65F00066E33 /* Login.swift in Sources */,
 				62B6E1FF25E419DD0035FC2A /* TelaHomeViewController.swift in Sources */,
+				62F229CF25E6B65300066E33 /* LoginRouter.swift in Sources */,
+				62F229D925E6B8F800066E33 /* Cep.swift in Sources */,
 				62B6E1E025E413BD0035FC2A /* TelaLoginViewModel.swift in Sources */,
 				6223627F25DFFA8D001676BD /* AppDelegate.swift in Sources */,
+				62F229BA25E69D3500066E33 /* StatusRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
